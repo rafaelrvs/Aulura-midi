@@ -9,14 +9,21 @@ function tocaSom(idElementoAudio){
 
  let contador = 0;
  // automatização
- while(contador < listaDeTeclas.length){
+ for(contador = 0; contador < listaDeTeclas.length; contador++){
 
   const tecla = listaDeTeclas[contador];
   const instrumento = tecla.classList[1];
 //template string pegando os id dinamicamente
   const idAudio = `#som_${instrumento}`
+  
   tecla.onclick = function () {
     tocaSom(idAudio);
   }
-  contador = contador +1;
+  tecla.onkeydown = function (){
+    tecla.classList.add('ativa');
+
+  }
+  tecla.onkeyup = function (){
+    tecla.classList.remove('ativa');
+  }
 }
